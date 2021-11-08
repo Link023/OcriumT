@@ -1,1 +1,1 @@
-OcriumT is a pretty cool mod, it does...this. Modify this file with a description of your mod.
+OcriumT aims to add items, status effects, enemies and other features you may have seen in other games.
