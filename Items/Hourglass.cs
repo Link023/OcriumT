@@ -12,6 +12,7 @@ namespace OcriumT.Items
             Tooltip.SetDefault("Puts you in Stasis for a short time.");
         }
 
+        //who's joe?
         public override void SetDefaults()
         {
             item.value = 10000;

@@ -11,3 +11,6 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+#.idea folders that get added for some reason
+/.idea/
+/.idea/.idea.OcriumT.dir/.idea/
