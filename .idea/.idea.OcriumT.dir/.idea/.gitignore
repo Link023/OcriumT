@@ -1,6 +1,9 @@
 ﻿# Default ignored files
 /shelf/
 /workspace.xml
+/.git/
+/.idea/
+/.bin/
 # Rider ignored files
 /contentModel.xml
 /.idea.OcriumT.iml
