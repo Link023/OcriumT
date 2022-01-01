@@ -13,4 +13,11 @@
   <ItemGroup>
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Items\Accessories\Mage" />
+    <Folder Include="Items\Accessories\Melee" />
+    <Folder Include="Items\Accessories\Ranger" />
+    <Folder Include="Items\Accessories\Summoner" />
+    <Folder Include="Items\Accessories\Thrower" />
+  </ItemGroup>
 </Project>
