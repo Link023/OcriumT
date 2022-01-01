@@ -25,7 +25,7 @@ namespace OcriumT.Items.Accessories
         {
             player.maxMinions += 2;
             player.minionKB += 6f;
-            //item.autoReuse
+            item.autoReuse = true;
             //add extra summon damage
         }
 
