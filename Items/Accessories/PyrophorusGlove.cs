@@ -25,7 +25,6 @@ namespace OcriumT.Items.Accessories
         {
             player.maxMinions += 3;
             player.minionKB += 7f;
-            player.
         }
 
         public override void AddRecipes()
