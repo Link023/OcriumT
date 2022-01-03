@@ -14,18 +14,19 @@ namespace OcriumT.Items.Weapons.Mage
         public override void SetDefaults()
         {
             // Combat
-            item.damage = 62;
+            item.damage = 67;
             item.magic = true;
-            item.mana = 30;
+            item.mana = 6;
             item.knockBack = 5;
-            item.shoot = ProjectileID.CrystalPulse; // TODO: Create a custom projectile
-            item.shootSpeed = 10f;
+            item.shoot = ModContent.ProjectileType<Projectiles.WandOfTheEclipseLarge>();
+            item.shootSpeed = 17f;
             // Sprite
             item.width = 36;
             item.height = 36;
             // Animation
-            item.useTime = 28;
-            item.useAnimation = 15;
+            item.autoReuse = true;
+            item.useTime = 7;
+            item.useAnimation = 6;
             item.useStyle = ItemUseStyleID.SwingThrow;
             // Misc
             item.noMelee = true;
@@ -39,7 +40,7 @@ namespace OcriumT.Items.Weapons.Mage
         {
             if (Main.eclipse)
             {
-                // Mana usage is reduced by 67%
+                // Mana usage is reduced by two thirds
                 mult = 1f/3f;
             }
         }
