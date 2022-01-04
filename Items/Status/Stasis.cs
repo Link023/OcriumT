@@ -1,4 +1,6 @@
+using IL.Terraria.ID;
 using Terraria.ModLoader;
+using BuffID = Terraria.ID.BuffID;
 
 namespace OcriumT.Items.Status
 {
@@ -14,7 +16,9 @@ namespace OcriumT.Items.Status
         {
             for (int type = 0; type < player.buffImmune.Length; type++)
             {
-                if (type == Type) continue; // Don't clear itself
+                if (type == Type) continue;                                     // Don't clear stasis
+                if (type == ModContent.BuffType<StasisSickness>()) continue;    // Don't clear stasis sickness
+                if (type == BuffID.PotionSickness) continue;                    // Don't clear potion sickness
                 player.buffImmune[type] = true;
             }
             player.immune = true;
