@@ -31,15 +31,28 @@ float disp(float r)
 
 float4 FilterSpaceTimeDisplacement(float2 coords : TEXCOORD0) : COLOR0
 {
-	// Theoretical position of the player
-	float2 player = float2(0.5, 0.5);
-	// Calculate a vector from the player
-	float2 p = coords - player;
-	float r = dot(p,p);
-	// If we're within radius, push outward
-	float2 uv = coords + disp(dot(p,p)) * normalize(p);
-	
-	float4 color = tex2D(uImage0, uv);
+	// Get screen resolution ration (rho :: $ > 1)
+    float rho = uScreenResolution.x / uScreenResolution.y;
+    
+    // Theoretical position of the player
+    float2 player = float2(0.5, 0.5);
+    
+    // Calculate a vector from the player
+    float2 p = coords - player;
+    p.x *= rho;
+    float r = dot(p,p);
+    
+    // Displace texture coordinates
+    float2 uv = coords + disp(r / uZoom.x) * normalize(p);
+    float4 color = tex2D(uImage0, uv);
+    // Darken the colors in the center of the screen
+    if(r < 0.016)
+    {
+        float q = r / 0.016;
+        q /= 3.0;
+        q += 0.67;
+        color.g *= q;
+    }
     return color;
 }
 
