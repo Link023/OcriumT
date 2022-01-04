@@ -16,6 +16,6 @@
   <ItemGroup>
     <Folder Include="Items\Accessories\Mage" />
     <Folder Include="Items\Accessories\Melee" />
-    <Folder Include="Items\Accessories\Ranger" />
+    <Folder Include="Items\Accessories\Ranger\ShieldBow" />
   </ItemGroup>
 </Project>

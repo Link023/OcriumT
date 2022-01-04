@@ -19,7 +19,7 @@ namespace OcriumT.Items.NonConsumable
             item.value = 10000;
             item.consumable = false;
             item.useAnimation = 90;
-            item.UseSound = SoundID.Item79;
+            item.UseSound = SoundID.Item4;
             item.useStyle = ItemUseStyleID.HoldingUp;
             item.useTurn = true;
             item.useTime = 90;
