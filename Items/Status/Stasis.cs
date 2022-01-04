@@ -1,6 +1,4 @@
-using Terraria;
 using Terraria.ModLoader;
-using Player = IL.Terraria.Player;
 
 namespace OcriumT.Items.Status
 {
@@ -10,6 +8,11 @@ namespace OcriumT.Items.Status
         {
             DisplayName.SetDefault("Stasis");
             Description.SetDefault("No one will hurt you. You will hurt no one.");
+        }
+
+        public override void Update(Terraria.Player player, ref int buffIndex)
+        {
+            player.immune = true;
         }
     }
 }
