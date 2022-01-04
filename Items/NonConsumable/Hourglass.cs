@@ -28,12 +28,15 @@ namespace OcriumT.Items.NonConsumable
 
         public override bool CanUseItem(Player player)
         {
-            return true;
+            // The player cannot use this item when sick.
+            return !player.HasBuff(ModContent.BuffType<StasisSickness>());
         }
 
         public override bool UseItem(Player player)
         {
             player.AddBuff(ModContent.BuffType<Stasis>(), 150, false);
+            player.AddBuff(ModContent.BuffType<StasisSickness>(), 7200 + 150, false);
+            player.AddBuff(BuffID.PotionSickness, 1800 + 150);
             return true;
         }
     }
