@@ -10,7 +10,7 @@ namespace OcriumT.Items.Accessories.Classless {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Blood Shield");
-            Tooltip.SetDefault("Reabsorb the blood lost. Just don't look. Restores 4% of your max HP every second for 10 seconds. Classless.");
+            Tooltip.SetDefault("Reabsorb the blood lost. Just don't look. Restores 5% of your max HP every second for 10 seconds. Classless.");
         }
 
         public override void SetDefaults()
