@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace OcriumT.Items.Accessories
+namespace OcriumT.Items.Accessories.Summoner
 {
     public class PyrophorusGlove : ModItem
     {

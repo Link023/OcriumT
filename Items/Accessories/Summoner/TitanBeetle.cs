@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Item = On.Terraria.Item;
 
-namespace OcriumT.Items.Accessories
+namespace OcriumT.Items.Accessories.Summoner
 {
     public class TitanBeetle : ModItem
     {

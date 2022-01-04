@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace OcriumT.Items.Accessories.Thrower
+namespace OcriumT.Items.Accessories.Thrower.JackCards
 {
     public class JackCard : ModItem
     {
