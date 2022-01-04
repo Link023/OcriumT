@@ -25,9 +25,9 @@ namespace OcriumT.Items.Weapons.Mage
             item.height = 36;
             // Animation
             item.autoReuse = true;
-            item.useTime = 7;
-            item.useAnimation = 6;
-            item.useStyle = ItemUseStyleID.SwingThrow;
+            item.useTime = 8;
+            item.useAnimation = 8;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             // Misc
             item.noMelee = true;
             item.channel = true;
