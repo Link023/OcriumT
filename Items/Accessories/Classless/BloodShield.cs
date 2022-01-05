@@ -6,7 +6,7 @@ using OcriumT.Items.Status;
 namespace OcriumT.Items.Accessories.Classless {
     public class BloodShield : ModItem
     {
-        private int buffDuration = 1200;
+        private int buffDuration = 600;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Blood Shield");
@@ -22,16 +22,13 @@ namespace OcriumT.Items.Accessories.Classless {
         {
             player.lifeRegen += 2;
             player.allDamage += 8f;
-
-            //item is not on cooldown
+            
+            
             if (player.HasBuff(ModContent.BuffType<ReabsorptionCD>())) return;
-            //player health is below 20%
             if (player.statLife >= player.statLifeMax / 5) return;
-            //player is not already affected by the buff
             if (player.HasBuff(ModContent.BuffType<Reabsorption>())) return;
-            //grant buff
+            
             player.AddBuff(ModContent.BuffType<Reabsorption>(), buffDuration, true);
-            //grant cooldown buff
             player.AddBuff(ModContent.BuffType<ReabsorptionCD>(), buffDuration + 18000 + buffDuration);
         }
 

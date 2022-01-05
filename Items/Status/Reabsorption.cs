@@ -1,6 +1,5 @@
-using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.World.Generation;
 
 namespace OcriumT.Items.Status
 {
@@ -15,7 +14,16 @@ namespace OcriumT.Items.Status
 
         public override void Update(Terraria.Player player, ref int buffIndex)
         {
-            player.lifeRegen += player.statLifeMax / 20;
+
+            if (player.HasBuff(BuffID.Lifeforce))
+            {
+                player.lifeRegen += player.statLifeMax / 9;
+            }
+            else
+            {
+                player.lifeRegen += player.statLifeMax / 10;
+            }
+           
         }
     }
 }
