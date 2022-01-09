@@ -15,6 +15,9 @@ namespace OcriumT.Items.Weapons
         {
             // This item has values close to the 'Zombie Arm' (id 1304)
             // It is, however, slightly faster and has a lower base damage.
+            // Moreover, the hitbox is a bit thinner, which means that enemies
+            // who are close-by have a larger chance of hitting you before you get them.
+            
             item.value = 10000;
             item.melee = true;
             item.damage = 11;
@@ -23,9 +26,9 @@ namespace OcriumT.Items.Weapons
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.useAnimation = 20;
             item.rare = ItemRarityID.White;
-            // Sprite
-            item.width = 16;
-            item.height = 16;
+            // Hitbox
+            item.width = 20;
+            item.height = 28;
         }
     }
 }
