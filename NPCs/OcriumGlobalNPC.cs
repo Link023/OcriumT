@@ -10,8 +10,8 @@ namespace OcriumT.NPCs
     {
         public override void NPCLoot(NPC npc)
         {
-            // Zombies get a 8 in 30 (=3.75%) chance to drop a soup ladle
-            if (npc.type == NPCID.Zombie && Main.rand.Next(30) < 8)
+            // Zombies get a 1 in 40 (=2.5%) chance to drop a soup ladle
+            if (npc.type == NPCID.Zombie && Main.rand.Next(40) == 0)
             {
                 Item.NewItem(npc.getRect(), ModContent.ItemType<SoupLadle>(), 1);
             }
