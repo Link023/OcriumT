@@ -15,16 +15,18 @@ public class Hourglass : ModItem
 
     public override void SetDefaults()
     {
-        Item.value = Item.buyPrice(0, 1, 0, 0);
+        // Usage
         Item.consumable = false;
-        Item.maxStack = 1;
-
-        Item.UseSound = SoundID.Item4;
-        Item.useStyle = ItemUseStyleID.HoldUp;
-
-        Item.useAnimation = 90;
         Item.useTime = 90;
         Item.useTurn = true;
+        // Render
+        Item.useAnimation = 90;
+        Item.useStyle = ItemUseStyleID.HoldUp;
+        Item.UseSound = SoundID.Item4;
+        // Misc
+        Item.maxStack = 1;
+        Item.rare = ItemRarityID.Yellow;
+        Item.value = Item.buyPrice(0, 1, 0, 0);
     }
 
     public override bool CanUseItem(Player player)
