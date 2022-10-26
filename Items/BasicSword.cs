@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Ocrium.Items
+namespace OcriumT.Items
 {
 	public class BasicSword : ModItem
 	{
