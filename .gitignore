@@ -1,2 +1,7 @@
 obj/
 /obj/
+
+# Rider Project Files
+Folder.DotSettings.user
+.idea/
+bin/
