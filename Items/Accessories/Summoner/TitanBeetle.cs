@@ -13,9 +13,12 @@ public class TitanBeetle : ModItem
 
     public override void SetDefaults()
     {
+        // Accessory
         Item.accessory = true;
+        // Sprite
         Item.width = 28;
         Item.height = 24;
+        // Misc
         Item.rare = ItemRarityID.Lime;
         Item.value = Item.buyPrice(gold: 1);
     }
