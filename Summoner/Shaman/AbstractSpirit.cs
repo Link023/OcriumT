@@ -45,6 +45,11 @@ public abstract class AbstractSpiritMinion : ModProjectile
         return false;
     }
 
+    private float AdjustRange(float units)
+    {
+        return units * 16f;
+    }
+
     #region AI
 
     protected void ActivityCheck<TBuff>(Player owner) where TBuff : ModBuff
@@ -117,10 +122,7 @@ public abstract class AbstractSpiritMinion : ModProjectile
 
     protected List<NPC> SeekAllInArea(float range = 20f)
     {
-        // Adjust for world units:
-        // 1 tile is 16u
-        range *= 16f;
-
+        range = AdjustRange(range);
         List<NPC> targets = new List<NPC>();
 
         for (int i = 0; i < Main.maxNPCs; i++)
@@ -139,6 +141,24 @@ public abstract class AbstractSpiritMinion : ModProjectile
         return targets;
     }
 
+    protected List<Player> SeekTeam(Player owner, float range)
+    {
+        range = AdjustRange(range);
+        List<Player> team = new List<Player>();
+
+        foreach (var player in Main.player)
+        {
+            if (player != null
+                && (owner.team == 0 || owner.team == player.team)
+                && Vector2.Distance(Projectile.Center, player.Center) <= range)
+            {
+                team.Add(player);
+            }
+        }
+
+        return team;
+    }
+
     #endregion
 
     #region Animation
@@ -150,9 +170,7 @@ public abstract class AbstractSpiritMinion : ModProjectile
         var circumference = 2 * MathF.PI * range;
         var dusts = (int)MathF.Round(circumference * density);
 
-        // Adjust for world units:
-        // 1 tile is 16u
-        range *= 16f;
+        range = AdjustRange(range);
 
         for (var i = 0; i < dusts; i++)
         {
@@ -170,7 +188,7 @@ public abstract class AbstractSpiritMinion : ModProjectile
     #endregion
 }
 
-public abstract class AbstractSpiritBuff : ModBuff
+public abstract class AbstractSpiritBuff<TMinion> : ModBuff where TMinion : AbstractSpiritMinion
 {
     public override void SetStaticDefaults()
     {
@@ -180,7 +198,7 @@ public abstract class AbstractSpiritBuff : ModBuff
 
     public override void Update(Player player, ref int buffIndex)
     {
-        if (player.ownedProjectileCounts[ModContent.ProjectileType<BorealSpiritMinion>()] > 0)
+        if (player.ownedProjectileCounts[ModContent.ProjectileType<TMinion>()] > 0)
         {
             player.buffTime[buffIndex] = 18000;
         }

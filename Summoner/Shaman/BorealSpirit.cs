@@ -44,7 +44,7 @@ public class BorealSpiritMinion : AbstractSpiritMinion
     }
 }
 
-public class BorealSpiritBuff : AbstractSpiritBuff
+public class BorealSpiritBuff : AbstractSpiritBuff<BorealSpiritMinion>
 {
     public override void SetStaticDefaults()
     {
