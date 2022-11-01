@@ -70,54 +70,47 @@ public abstract class AbstractSpiritMinion : ModProjectile
         }
     }
 
-    protected NPC SeekOneTarget(Player owner, float maxDist = 700f, bool checkLos = true)
+    protected NPC SeekOneTarget(Player owner, float maxDist = 60f, bool checkLos = true)
     {
-        float d = maxDist;
-        Vector2 tgt = Projectile.position;
-        bool found = false;
-
+        float d = AdjustRange(maxDist);
+        NPC tgt = null;
 
         // First check if the owner has targeted anything
         if (owner.HasMinionAttackTargetNPC)
         {
             NPC dude = Main.npc[owner.MinionAttackTargetNPC];
             float between = Vector2.Distance(dude.Center, Projectile.Center);
-            if (between < 2000f)
+            if (between < maxDist * 3f)
             {
                 d = between;
-                tgt = dude.Center;
-                found = true;
+                tgt = dude;
             }
         }
 
         // If nothing was targeted explicitly, find the nearest npc
-        if (!found)
+        if (tgt == null)
         {
             for (int i = 0; i < Main.maxNPCs; i++)
             {
                 NPC npc = Main.npc[i];
                 if (npc.CanBeChasedBy())
                 {
-                    float between = Vector2.Distance(npc.Center, Projectile.Center);
-                    bool closest = Vector2.Distance(Projectile.Center, tgt) > between;
-                    bool inRange = between < d;
-                    bool lineOfSight = !checkLos || Collision.CanHitLine(Projectile.position, Projectile.width,
-                        Projectile.height,
+                    float distance = Vector2.Distance(npc.Center, Projectile.Center);
+                    bool closest = tgt == null || Vector2.Distance(Projectile.Center, tgt.Center) > distance;
+                    bool inRange = distance < d;
+                    bool lineOfSight = !checkLos || Collision.CanHitLine(
+                        Projectile.position, Projectile.width, Projectile.height,
                         npc.position, npc.width, npc.height);
-                    // Additional check for this specific minion behavior, otherwise it will stop attacking once it dashed through an enemy while flying though tiles afterwards
-                    // The number depends on various parameters seen in the movement code below. Test different ones out until it works alright
-                    bool closeThroughWall = between < 100f;
-                    if (((closest && inRange) || !found) && (lineOfSight || closeThroughWall))
+                    if (inRange && closest && lineOfSight)
                     {
-                        d = between;
-                        tgt = npc.Center;
-                        found = true;
+                        tgt = npc;
+                        d = distance;
                     }
                 }
             }
         }
 
-        return null; // TODO: implemenmnejkrth
+        return tgt;
     }
 
     protected List<NPC> SeekAllInArea(float range = 20f)

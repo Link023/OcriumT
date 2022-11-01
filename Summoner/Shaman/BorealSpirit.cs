@@ -24,10 +24,14 @@ public class BorealSpiritMinion : AbstractSpiritMinion
 
         ActivityCheck<BorealSpiritBuff>(owner);
         Gravity();
-        foreach (var target in SeekAllInArea(12.5f))
+        if (Projectile.ai[0] / 0.6f % 1f < 0.16f)
         {
-            target.AddBuff(BuffID.Frostburn, 5);
+            foreach (var target in SeekAllInArea(12.5f))
+            {
+                target.AddBuff(BuffID.Frostburn, 10);
+            }
         }
+
 
         Projectile.ai[0] += 0.01f;
         Projectile.ai[1] += 0.018f;
